@@ -11,9 +11,10 @@ class Chat extends Model {
 		Chat.belongsTo(models.Group, { foreignKey: 'groupId' });
 		// Belongs to a Story
 		Chat.belongsTo(models.Story, { foreignKey: 'storyId' });
+		// Chat belong to Sprint
+		Chat.belongsTo(models.Sprint, { foreignKey: 'sprintId' });
 	}
 }
-
 
 Chat.init(
 	{
@@ -39,6 +40,14 @@ Chat.init(
 				key: 'id',
 			},
 		},
+		sprintId: {
+			type: DataTypes.UUID,
+			allowNull: true,
+			references: {
+				model: 'Sprints',
+				key: 'id',
+			},
+		},
 	},
 	{
 		sequelize,
@@ -46,6 +55,5 @@ Chat.init(
 		timestamps: true,
 	}
 );
-
 
 module.exports = Chat;

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/user');
-const UserGroup = require('../../models/userGroup');
+const UserGroup = require('../../models/usergroup');
 
 router.get('/', async (req, res) => {
 	try {
@@ -36,3 +36,6 @@ router.get('/', async (req, res) => {
 		res.status(500).send({ message: 'Internal server error' });
 	}
 }
+);
+
+module.exports = router;

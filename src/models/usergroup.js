@@ -59,3 +59,5 @@ UserGroup.init(
 		]
 	}
 );
+
+module.exports = UserGroup;

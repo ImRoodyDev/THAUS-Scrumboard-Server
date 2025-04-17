@@ -10,11 +10,17 @@ class Group extends Model {
             onDelete: 'CASCADE' // This will automatically delete UserGroup entries when a Group is deleted
         });
         // One-to-many: Group has many sprints
-        Group.hasMany(models.Sprint, { foreignKey: 'groupId' });
+        Group.hasMany(models.Sprint, { foreignKey: 'groupId',
+            onDelete: 'CASCADE' // This will automatically delete child entries
+        });
         // One-to-many: Group has many features
-        Group.hasMany(models.Feature, { foreignKey: 'groupId' });
+        Group.hasMany(models.Feature, { foreignKey: 'groupId',
+            onDelete: 'CASCADE' // This will automatically delete child entries
+        });
         // One-to-many: Group has many chats
-        Group.hasMany(models.Chat, { foreignKey: 'groupId' });
+        Group.hasMany(models.Chat, { foreignKey: 'groupId' ,
+            onDelete: 'CASCADE' // This will automatically delete child entries
+        });
     }
 }
 

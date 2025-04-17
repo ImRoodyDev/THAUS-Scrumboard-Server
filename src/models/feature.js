@@ -6,13 +6,28 @@ class Feature extends Model {
 	// Initialize Sequelize model
 	static associate(models) {
 		// Belongs to a Group
-		Feature.belongsTo(models.Group, { foreignKey: 'groupId' });
+		Feature.belongsTo(models.Group, {
+			foreignKey: 'groupId',
+			onDelete: 'CASCADE', // This will automatically delete child entries
+		});
 
 		// One-to-many: Feature has many epics
-		Feature.hasMany(models.Epic, { foreignKey: 'featureId' });
+		Feature.hasMany(models.Epic, {
+			foreignKey: 'featureId',
+			onDelete: 'CASCADE', // This will automatically delete child entries
+		});
 
 		// One-to-many: Feature has many stories
-		Feature.hasMany(models.Story, { foreignKey: 'featureId' });
+		Feature.hasMany(models.Story, {
+			foreignKey: 'featureId',
+			onDelete: 'CASCADE', // This will automatically delete child entries
+		});
+
+		// One-to-many: Feature has many stories
+		Feature.hasMany(models.Story, {
+			foreignKey: 'featureId',
+			onDelete: 'CASCADE', // This will automatically delete child entries
+		});
 	}
 }
 
@@ -26,6 +41,7 @@ Feature.init(
 		},
 		name: DataTypes.STRING(100),
 		groupId: {
+			allowNull: false,
 			type: DataTypes.UUID,
 			references: {
 				model: 'Groups',

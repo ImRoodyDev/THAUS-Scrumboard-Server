@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/user');
-const UserGroup = require('../../models/userGroup');
-
+const UserGroup = require('../../models/usergroup');
 
 router.get('/', async (req, res) => {
 	try {
@@ -12,8 +11,8 @@ router.get('/', async (req, res) => {
 		const userRole = await UserGroup.findOne({
 			where: {
 				userId: req.uuid,
-				groupId: groupId
-			}
+				groupId: groupId,
+			},
 		});
 
 		if (!userRole || userRole.role !== 'admin') {
@@ -28,15 +27,14 @@ router.get('/', async (req, res) => {
 		}
 
 		// Check if the user is already a member of the group
-		await user.addGroup(groupId , { through: { role: 'member' } });
+		await user.addGroup(groupId, { through: { role: 'member' } });
 
 		res.status(200).send({
 			message: 'User added to group successfully',
 		});
-	}
-	catch (error) {
+	} catch (error) {
 		if (error.name === 'SequelizeUniqueConstraintError') {
-			return res.status(409).send({message: 'User is already a member of this group'});
+			return res.status(409).send({ message: 'User is already a member of this group' });
 		}
 
 		console.error('Error in adding user to group:', error);

@@ -54,11 +54,26 @@ function validateGroupName(name){
 
 	const { error, value } = validator.validate({name});
 
-	return [error, value];
+	return [error, value.name];
+}
+
+function validateTextName(name){
+	const validator = Joi.object({
+		name: Joi.string().alphanum().max(50).trim().required().label('Name').messages({
+			'string.empty': `Uw naam kan niet leeg zijn. Voer een geldige naam in.`,
+			'string.alphanum': `Uw naam mag alleen letters en cijfers bevatten.`,
+			'any.required': `Het veld Naam is verplicht. Geef uw naam op.`,
+		}),
+	});
+
+	const { error, value } = validator.validate({name});
+
+	return [error, value.name];
 }
 
 module.exports = {
 	validateLogin,
 	validateRegister,
-	validateTextName: validateGroupName
+	validateTextName,
+	validateGroupName
 };
