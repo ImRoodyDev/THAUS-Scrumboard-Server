@@ -5,7 +5,7 @@ const { Model, DataTypes } = require('sequelize');
 class Sprint extends Model {
 	// Initialize Sequelize model
 	static associate(models) {
- 		// Belongs to a Group
+		// Belongs to a Group
 		Sprint.belongsTo(models.Group, {
 			foreignKey: 'groupId',
 			onDelete: 'CASCADE', // Automatically delete Sprints when the associated Group is deleted
@@ -23,7 +23,6 @@ class Sprint extends Model {
 			onDelete: 'CASCADE', // Automatically delete Chat when the associated Sprint is deleted
 		});
 	}
-
 }
 
 Sprint.init(
@@ -34,11 +33,15 @@ Sprint.init(
 			allowNull: false,
 			defaultValue: DataTypes.UUIDV4,
 		},
- 		startDate:{
+		name: {
+			type: DataTypes.STRING(100),
+			allowNull: false,
+		},
+		startDate: {
 			type: DataTypes.DATE,
-            allowNull: true,
-	    },
-		endDate:{
+			allowNull: true,
+		},
+		endDate: {
 			type: DataTypes.DATE,
 			allowNull: true,
 		},
