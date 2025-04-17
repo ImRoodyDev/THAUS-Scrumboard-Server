@@ -3,7 +3,7 @@ const { initializeSequelize, disconnectSequelize } = require('./database');
 const mainApp = require('./app');
 
 // Inialize database
-initializeSequelize();
+initializeSequelize().then(r => {console.log('Sequelize initialized')});
 
 // Initialize applications
 mainApp();
