@@ -6,8 +6,8 @@ const applicationRoutes = express.Router();
 const { NoAuthentication, Authentication } = require('../middlewares/authentication');
 
 // Routes handleing for express application
-const Register = require('./auth/register');
-const Login = require('./auth/login');
+const Register = require('./auth/register.route');
+const Login = require('./auth/login.route');
 
 applicationRoutes.use('/login', NoAuthentication, Login);
 applicationRoutes.use('/register', NoAuthentication, Register);

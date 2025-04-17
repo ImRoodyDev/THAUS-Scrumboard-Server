@@ -2,21 +2,14 @@
 const { sequelize } = require('../../database');
 const { Model, DataTypes } = require('sequelize');
 
-class Feature extends Model {
+class Story extends Model {
 	// Initialize Sequelize model
 	static associate(models) {
-		// Belongs to a Group
-		Feature.belongsTo(models.Group, { foreignKey: 'groupId' });
-
-		// One-to-many: Feature has many epics
-		Feature.hasMany(models.Epic, { foreignKey: 'featureId' });
-
-		// One-to-many: Feature has many stories
-		Feature.hasMany(models.Story, { foreignKey: 'featureId' });
+		// Define associations here if needed
 	}
 }
 
-Feature.init(
+Story.init(
 	{
 		id: {
 			type: DataTypes.UUID,
@@ -32,14 +25,29 @@ Feature.init(
 				key: 'id',
 			},
 		},
+		epicId: {
+			type: DataTypes.UUID,
+			references: {
+				model: 'Epics',
+				key: 'id',
+			},
+		},
+		sprintId: {
+			type: DataTypes.UUID,
+			allowNull : true,
+			references: {
+				model: 'Sprints',
+				key: 'id',
+			},
+		},
 	},
 	{
 		sequelize,
-		modelName: 'Feature',
-		tableName: 'Features',
+		modelName: 'Story',
+		tableName: 'Stories',
 		timestamps: true,
 		createdAt: true,
 	}
 );
 
-module.exports = Feature;
+module.exports = Story;

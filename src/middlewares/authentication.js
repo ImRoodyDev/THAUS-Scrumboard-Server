@@ -4,10 +4,10 @@ const { verifyTokens, clearTokens } = require('../controllers/authentication');
 const Authentication = async (req, res, next) => {
 	try {
 		// Access token
-		const accessToken = req.headers.authorization?.split(' ')[1];
+		const accessToken = req.headers.authorization?.split(' ')[1] || '';
 
 		// Refresh token
-		const refreshToken = req.cookies.refreshToken;
+		const refreshToken = req.cookies.refreshToken || '';
 
 		// Check tokens
 		if (typeof accessToken != 'string' || typeof refreshToken != 'string') {
@@ -15,7 +15,7 @@ const Authentication = async (req, res, next) => {
 		}
 
 		// Tokens availability
-		if (refreshToken == null || accessToken == null) {
+		if (refreshToken.length < 1 || accessToken.length < 1 ) {
 			throw new Error('User not logged in');
 		}
 

@@ -19,7 +19,7 @@ fs.readdirSync(__dirname)
 		models[model.name] = model;
 	});
 
-// Loop through all the keys in DB JSON to asociate them
+// Loop through all the keys in DB JSON to associate them
 Object.keys(models).forEach((modelName) => {
 	if (models[modelName].associate) {
 		models[modelName].associate(models);

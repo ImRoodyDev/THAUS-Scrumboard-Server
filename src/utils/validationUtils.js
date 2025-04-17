@@ -43,31 +43,16 @@ function validateRegister(postBody) {
 	return [error, value];
 }
 
-function validateUsername(data) {
+function validateGroupName(name){
 	const validator = Joi.object({
-		username: Joi.string().alphanum().trim().required().label('Username').messages({
-			'string.empty': `Uw gebruikersnaam kan niet leeg zijn. Voer een geldige gebruikersnaam in.`,
-			'string.alphanum': `Uw gebruikersnaam mag alleen letters en cijfers bevatten.`,
-			'any.required': `Het veld Gebruikersnaam is verplicht. Geef uw gebruikersnaam op.`,
+		name: Joi.string().alphanum().max(50).trim().required().label('GroupName').messages({
+			'string.empty': `Uw groepsnaam kan niet leeg zijn. Voer een geldige groepsnaam in.`,
+			'string.alphanum': `Uw groepsnaam mag alleen letters en cijfers bevatten.`,
+			'any.required': `Het veld Groepsnaam is verplicht. Geef uw groepsnaam op.`,
 		}),
 	});
 
-	const { error, value } = validator.validate(data);
-
-	return [error, value];
-}
-
-function validatePassword(data) {
-	const validator = Joi.object({
-		password: passwordComplexity(complexityOptions).trim().required().label('Password').messages({
-			'string.empty': `Uw wachtwoord kan niet leeg zijn. Voer een geldig wachtwoord in.`,
-			'string.length': `Uw wachtwoord voldoet niet aan de vereiste complexiteit. Volg de aangegeven richtlijnen.`,
-			'string.pattern': `Uw wachtwoord voldoet niet aan de vereiste complexiteit. Volg de aangegeven richtlijnen.`,
-			'any.required': `Het veld Wachtwoord is verplicht. Geef een wachtwoord op.`,
-		}),
-	});
-
-	const { error, value } = validator.validate(data);
+	const { error, value } = validator.validate({name});
 
 	return [error, value];
 }
@@ -75,6 +60,5 @@ function validatePassword(data) {
 module.exports = {
 	validateLogin,
 	validateRegister,
-	validateUsername,
-	validatePassword,
+	validateTextName: validateGroupName
 };

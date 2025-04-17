@@ -4,24 +4,21 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 class User extends Model {
-	/**
-	 * Helper method for defining associations.
-	 * This method is not a part of Sequelize lifecycle.
-	 * The `models/index` file will call this method automatically.
-	 */
+ 		// Initialize Sequelize model
 	static associate(models) {
-		/*// Many-to-many with Group (membership)
-		User.belongsToMany(models.Group, { through: 'UserGroups', foreignKey: 'userId' });
+		// Many-to-many with Group (membership)
+		User.belongsToMany(models.Group, { through: 'UserGroups', foreignKey: 'userId',
+			onDelete: 'CASCADE' // This will automatically delete UserGroup entries when a User is deleted
+		});
 		// One-to-many: User owns groups
 		User.hasMany(models.Group, { foreignKey: 'ownerId' });
-		// e.g. user has many groups
-		this.hasMany(models.Group, { foreignKey: 'userId' });*/
+		// One-to-many: User has many messages
+		User.hasMany(models.Message, { foreignKey: 'userId' });
 	}
 
 	/* Compare User hash-password */
 	static async compareHashPassword(password = '', hashPassword = '') {
-		const validPassword = await bcrypt.compare(password, hashPassword);
-		return validPassword;
+		return await bcrypt.compare(password, hashPassword);
 	}
 }
 
@@ -50,6 +47,10 @@ User.init(
 				this.setDataValue('password', hashPassword);
 			},
 		},
+		notifications: {
+			type: DataTypes.TEXT,
+			allowNull: true,
+ 		},
 	},
 	{
 		sequelize,
@@ -57,7 +58,17 @@ User.init(
 		tableName: 'Users',
 		// don't forget to enable timestamps!
 		timestamps: true,
+		createdAt: true
 	}
 );
+
+// On create or update change the notications array to a string
+User.beforeCreate((user) => {
+	user.notifications = JSON.stringify(user.notifications);
+});
+
+User.beforeUpdate((user) => {
+	user.notifications = JSON.stringify(user.notifications);
+});
 
 module.exports = User;
