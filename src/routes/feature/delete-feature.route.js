@@ -4,8 +4,7 @@ const Feature = require('../../models/feature');
 
 router.get('/', async (req, res) => {
 	try {
-		const groupId = req.query.groupId;
-		const featureId = req.body.featureId;
+ 		const {featureId, groupId} = req.query;
 
 		if (!featureId) {
 			return res.status(400).send({ message: 'Feature ID is vereist' });

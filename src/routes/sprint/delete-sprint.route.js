@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 			where: { id: req.uuid, groupId: groupId },
 		});
 
-		if (!userGroup) {
+		if (!userGroup || userGroup.role !== 'admin') {
 			return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
 		}
 

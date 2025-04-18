@@ -4,8 +4,7 @@ const UserGroup = require('../../models/usergroup');
 
 router.get('/', async (req, res) => {
 	try {
-		const groupId = req.query.groupId;
-		const userId = req.query.userId;
+		const {groupId, username} = req.query;
 
 		// Check if the user is an admin of this group
 		const userRole = await UserGroup.findOne({
@@ -20,7 +19,11 @@ router.get('/', async (req, res) => {
 		}
 
 		// Add the user to the group
-		const user = await User.findByPk(userId);
+		const user = await User.findOne({
+			where: {
+				username: username,
+			},
+		});
 
 		if (!user) {
 			return res.status(404).send({ message: 'User not found' });

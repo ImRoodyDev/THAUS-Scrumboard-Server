@@ -22,12 +22,6 @@ class Feature extends Model {
 			foreignKey: 'featureId',
 			onDelete: 'CASCADE', // This will automatically delete child entries
 		});
-
-		// One-to-many: Feature has many stories
-		Feature.hasMany(models.Story, {
-			foreignKey: 'featureId',
-			onDelete: 'CASCADE', // This will automatically delete child entries
-		});
 	}
 }
 

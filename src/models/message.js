@@ -28,6 +28,7 @@ Message.init(
 		userId: {
 			type: DataTypes.UUID,
 			references: {
+				allowNull: true,
 				model: 'Users',
 				key: 'id',
 			},
@@ -35,6 +36,13 @@ Message.init(
 		message: {
 			type: DataTypes.TEXT,
 			allowNull: false,
+		},
+		chatId: {
+			type: DataTypes.UUID,
+			references: {
+				model: 'Chats',
+				key: 'id',
+			},
 		},
 	},
 	{

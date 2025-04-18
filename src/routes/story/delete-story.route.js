@@ -4,11 +4,10 @@ const Story = require('../../models/story');
 
 router.get('/', async (req, res) => {
 	try {
-		const groupId = req.query.groupId;
-		const storyId = req.body.storyId;
+		const {groupId, storyId} = req.query;
 
 		if (!storyId) {
-			return res.status(400).send({ message: 'Story ID is vereist' });
+			return res.status(404).send({ message: 'Story ID is vereist' });
 		}
 
 		// Check if the user is a group member
@@ -25,6 +24,11 @@ router.get('/', async (req, res) => {
 
 		if (!story) {
 			return res.status(404).send({ message: 'Story niet gevonden' });
+		}
+
+		// Check if you have a sprint id if yes only owner can delete
+		if(story.sprintId && userGroup.role !== 'owner') {
+			return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
 		}
 
 		// Delete the story

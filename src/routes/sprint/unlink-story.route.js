@@ -14,6 +14,11 @@ router.post('/unlink', async (req, res) => {
 			return res.status(404).json({ message: 'Sprint not found' });
 		}
 
+		// Check if the sprint is started or finished
+		if (sprint.startDate || sprint.endDate) {
+			return res.status(400).json({ message: 'Cannot unlink stories from a sprint that is done or in progress' });
+		}
+
 		// Check if user belongs to the group that owns the sprint
 		const isMember = await UserGroup.findOne({
 			where: {

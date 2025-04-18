@@ -4,8 +4,7 @@ const Epic = require('../../models/epic');
 
 router.get('/', async (req, res) => {
 	try {
-		const { groupId } = req.body;
-		const epicId = req.body.epicId;
+		const { groupId, epicId } = req.query;
 
 		if (!epicId) {
 			return res.status(400).send({ message: 'Epic ID is vereist' });
@@ -16,7 +15,7 @@ router.get('/', async (req, res) => {
 			where: { id: req.uuid, groupId: groupId },
 		});
 
-		if (!userGroup) {
+		if (!userGroup || userGroup.role !== 'admin') {
 			return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
 		}
 

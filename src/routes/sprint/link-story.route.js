@@ -5,13 +5,18 @@ const UserGroup = require('../../models/usergroup');
 
 router.post('/', async (req, res) => {
 	try {
-		const { sprintId, storyId } = req.query;
+		const { sprintId, storyId } = req.body;
 		const userId = req.uuid;
 
 		// Find the sprint and check if it exists
 		const sprint = await Sprint.findByPk(sprintId);
 		if (!sprint) {
 			return res.status(404).json({ message: 'Sprint not found' });
+		}
+
+		// Check if the sprint is started or finished
+		if (sprint.startDate || sprint.endDate) {
+			return res.status(400).json({ message: 'Cannot link stories to a sprint that is done or in progress' });
 		}
 
 		// Find the story and check if it exists

@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
 		const userId = req.uuid;
 
 		// Validate input
-		if (!sprintId || !storyId || !status) {
+		if (!sprintId || !storyId) {
 			return res.status(400).json({ error: 'Missing required fields' });
 		}
 
@@ -39,15 +39,21 @@ router.post('/', async (req, res) => {
 
 		// Check if the story is actually linked to this sprint
 		if (story.sprintId !== sprintId) {
-			return res.status(400).json({ message: 'Story is not linked to this sprint' });
+			return res.status(404).json({ message: 'Story is not linked to this sprint' });
 		}
+
 
 		// Update the story status
 		if (start) {
-			await story.update({ startDate: new Date(start) });
+			await story.update({userId, startDate: new Date() });
 		}
 		if (end) {
-			await story.update({ endDate: new Date(end) });
+			// Chwck if was started by user
+			if (story.userId !== userId) {
+				return res.status(400).json({ message: 'You are not the one to working on this user story' });
+			}
+
+			await story.update({ endDate: new Date() });
 		}
 
 		// Check if all the stories in the sprint are completed
@@ -55,12 +61,13 @@ router.post('/', async (req, res) => {
 		const allCompleted = allStories.every((story) => story.status === 'completed');
 
 		if (allCompleted) {
-			await sprint.update({ endDate: new Date(end) });
+			await sprint.update({ endDate: new Date() });
 		}
 
 		return res.status(200).json({
 			success: true,
 			message: 'Story status updated successfully',
+			sprintCompleted: allCompleted,
 		});
 	} catch (error) {
 		console.error('Error updating story status:', error);
