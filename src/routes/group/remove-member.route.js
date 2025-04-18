@@ -26,7 +26,13 @@ router.get('/', async (req, res) => {
 			return res.status(404).send({ message: 'User not found' });
 		}
 
-		await user.removeGroup(groupId);
+		await UserGroup.destroy({
+			where: {
+				userId: user.id,
+				groupId: groupId,
+			},
+			force: true,
+		});
 
 		res.status(200).send({
 			message: 'User removed from group successfully',

@@ -14,7 +14,7 @@ const { database, username, password, host, dialect, port } = config[env];
 const sequelize = new Sequelize(database, username, password, { host, dialect, port, logging: false });
 
 // Wheather to reload the database
-const reloadDB = true;
+const reloadDB = false;
 
 /** Initialize the Sequelize connection
  * @returns {Promise<void>}

@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Group = require('../../models/group');
+const UserGroup = require('../../models/usergroup');
 const {validateTextName} = require('../../utils/validationUtils');
 
 router.post('/', async (req, res) => {
@@ -22,10 +23,16 @@ router.post('/', async (req, res) => {
 		const newGroup = await Group.create({
 			name: groupName,
 			type: groupType,
+			ownerId: req.uuid
 		});
 
-		// Add the user to the group
-		newGroup.addUsers( {userId: req.uuid, role : 'admin'});
+
+		// Add the user to the group with a role
+		await UserGroup.create({
+			userId: req.uuid,
+			groupId: newGroup.id,
+			role: 'admin',
+		});
 
 		// Send response to client
 		res.status(201).send({

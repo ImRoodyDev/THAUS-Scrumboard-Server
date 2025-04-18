@@ -21,6 +21,9 @@ class Group extends Model {
         Group.hasMany(models.Chat, { foreignKey: 'groupId' ,
             onDelete: 'CASCADE' // This will automatically delete child entries
         });
+
+        // Group belong to one user
+        Group.belongsTo(models.User, { foreignKey: 'ownerId' });
     }
 }
 

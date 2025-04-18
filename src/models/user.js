@@ -14,6 +14,8 @@ class User extends Model {
 		User.hasMany(models.Group, { foreignKey: 'ownerId' });
 		// One-to-many: User has many messages
 		User.hasMany(models.Message, { foreignKey: 'userId' });
+
+		User.hasMany(models.Group, { foreignKey: 'ownerId' });
 	}
 
 	/* Compare User hash-password */

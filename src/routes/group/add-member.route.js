@@ -30,7 +30,11 @@ router.get('/', async (req, res) => {
 		}
 
 		// Check if the user is already a member of the group
-		await user.addGroup(groupId, { through: { role: 'member' } });
+		await UserGroup.create({
+			userId: user.id,
+			groupId: groupId,
+			role: 'member',
+		});
 
 		res.status(200).send({
 			message: 'User added to group successfully',
