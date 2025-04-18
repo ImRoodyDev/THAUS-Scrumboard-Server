@@ -43,7 +43,7 @@ router.get('/', async (req, res) => {
 						},
 						{
 							model: Sprint,
-							attributes: ['id', 'name', 'startDate', 'endDate'],
+							attributes: ['id', 'startDate', 'endDate'],
 						},
 					],
 				},
