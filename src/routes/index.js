@@ -23,6 +23,7 @@ const CreateGroup = require('./group/create-group.route'); // ✅
 const DeleteGroup = require('./group/delete-group.route'); // ✅
 const RemoveMember = require('./group/remove-member.route'); // ✅
 const GetGroups = require('./group/get-groups.route'); // ✅
+const GetGroup = require('./group/get-group.route'); // ✅
 
 const AddSprint = require('./sprint/add-sprint.route'); // ✅
 const DeleteSprint = require('./sprint/delete-sprint.route'); // ✅
@@ -51,6 +52,7 @@ applicationRoutes.use('/group/create-group', Authentication, CreateGroup);
 applicationRoutes.use('/group/delete-group', Authentication, DeleteGroup);
 applicationRoutes.use('/group/remove-member', Authentication, RemoveMember);
 applicationRoutes.use('/group/get-groups', Authentication, GetGroups);
+applicationRoutes.use('/group/get-group', Authentication, GetGroup); // ✅
 
 applicationRoutes.use('/sprint/add-sprint', Authentication, AddSprint);
 applicationRoutes.use('/sprint/delete-sprint', Authentication, DeleteSprint);

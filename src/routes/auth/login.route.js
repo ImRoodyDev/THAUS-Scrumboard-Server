@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/user');
+const Group = require('../../models/group');
 const { generateAccessToken, generateRefreshToken, saveRefreshToken } = require('../../controllers/authentication');
 const { validateLogin } = require('../../utils/validationUtils');
 
@@ -37,10 +38,32 @@ router.post('/', async (req, res) => {
 		// Save refresh token
 		saveRefreshToken(res, refreshToken);
 
+		// Send only groups
+		const usergroup = await user.getUserGroups({
+			attributes: ['role'],
+			include: [
+				{
+					model: Group,
+					attributes: ['id', 'name', 'type'],
+				},
+			],
+		});
+
+		const groups = usergroup.map((usergroup) => {
+			const group = usergroup.Group;
+			return {
+				id: group.id,
+				name: group.name,
+				type: group.type,
+				role: usergroup.role,
+			};
+		});
+
 		// Send response to client
 		res.status(200).send({
 			accessToken,
 			message: 'Gebruiker succesvol ingelogd',
+			groups,
 		});
 	} catch (error) {
 		console.error('Error in user login:', error);

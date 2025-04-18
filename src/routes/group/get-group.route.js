@@ -7,11 +7,13 @@ const Story = require('../../models/story');
 const Sprint = require('../../models/sprint');
 const UserGroup = require('../../models/usergroup');
 
-router.get('/', async (req, res) => {
+router.get('/:groupId', async (req, res) => {
 	try {
+		const groupId = req.params.groupId;
+
 		// Fetch groups with related data
-		const usergroups = await UserGroup.findAll({
-			where: { userId: req.uuid },
+		const usergroup = await UserGroup.findOne({
+			where: { userId: req.uuid, groupId: groupId },
 			attributes: ['role'], // Fetch only the role of the user in the group
 			include: [
 				{
@@ -51,29 +53,30 @@ router.get('/', async (req, res) => {
 		});
 
 		// Check if groups exist
-		if (!usergroups || usergroups.length === 0) {
+		if (!usergroup || usergroup.length === 0) {
 			return res.status(404).send({ message: 'No groups found' });
 		}
 
 		// Format response data
-		const groups = usergroups.map((usergroup) => {
+		const group = (function () {
 			const group = usergroup.Group;
 
 			return {
 				id: group.id,
 				name: group.name,
 				type: group.type,
-				ownerId: group.ownerId,
+				// ownerId: group.ownerId,
 				createdAt: group.createdAt,
 				updatedAt: group.updatedAt,
 				currentUserRole: usergroup.role,
 
-				// Map members
-				members: group.UserGroups.map((member) => ({
-					userId: member.userId,
-					username: member.User?.username,
-					role: member.role,
-				})),
+				// Map members - Fix: changed usergroup to UserGroups with optional chaining
+				members:
+					group.UserGroups?.map((member) => ({
+						userId: member.userId,
+						username: member.User?.username,
+						role: member.role,
+					})) || [],
 
 				// Map sprints
 				sprints:
@@ -102,18 +105,20 @@ router.get('/', async (req, res) => {
 										id: story.id,
 										name: story.name,
 										description: story.description,
+										startDate: story.startDate,
+										endDate: story.endDate,
 										sprintId: story.sprintId,
 										userId: story.userId,
 									})) || [],
 							})) || [],
 					})) || [],
 			};
-		});
+		})();
 
 		// Send response to client
 		res.status(200).send({
 			message: 'Groups fetched successfully',
-			groups: groups,
+			groups: group,
 		});
 	} catch (error) {
 		console.error('Error in fetching groups:', error);

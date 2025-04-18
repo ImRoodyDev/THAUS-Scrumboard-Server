@@ -61,6 +61,11 @@ GET {{baseUrl}}/group/get-groups
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
+### Get Group by ID
+GET {{baseUrl}}/group/get-group/f21220d5-b95c-456a-a5b5-654786c36f08
+Authorization: Bearer {{accessToken}}
+# Cookie: refreshToken=your_refresh_token_here
+
 ### Add Member to Group
 GET {{baseUrl}}/group/add-member?groupId=f21220d5-b95c-456a-a5b5-654786c36f08&username=testuser666
 Authorization: Bearer {{accessToken}}
