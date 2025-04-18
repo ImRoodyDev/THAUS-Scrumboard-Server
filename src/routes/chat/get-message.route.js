@@ -8,19 +8,17 @@ router.get('/:type', async (req, res) => {
 		const { groupId, storyId, sprintId } = req.query;
 
 		// Validate groupId for group messages
-		if (type === 'group' && !groupId) {
+		if (!groupId) {
 			return res.status(400).send({ message: 'Group ID is required' });
 		}
 
 		// Check if the user is a group member
-		if (type === 'group') {
-			const userGroup = await UserGroup.findOne({
-				where: { id: req.uuid, groupId: groupId },
-			});
+		const userGroup = await UserGroup.findOne({
+			where: { userId: req.uuid, groupId: groupId },
+		});
 
-			if (!userGroup) {
-				return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
-			}
+		if (!userGroup) {
+			return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
 		}
 
 		try {

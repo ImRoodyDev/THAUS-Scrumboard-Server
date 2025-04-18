@@ -18,7 +18,7 @@ router.post('/:type', async (req, res) => {
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup) {
@@ -30,24 +30,21 @@ router.post('/:type', async (req, res) => {
 		try {
 			switch (type) {
 				case 'group':
-					await Chat.sendGroupMessage({groupId, message, userId});
-					return res.status(200).send({message: 'Message sent successfully'});
+					await Chat.sendGroupMessage({ groupId, message, userId });
+					return res.status(200).send({ message: 'Message sent successfully' });
 				case 'story':
-					await Chat.sendStoryMessage({storyId, message, userId});
-					return res.status(200).send({message: 'Message sent successfully'});
+					await Chat.sendStoryMessage({ storyId, message, userId });
+					return res.status(200).send({ message: 'Message sent successfully' });
 				case 'sprint':
-					await Chat.sendSprintMessage({sprintId, message, userId});
-					return res.status(200).send({message: 'Message sent successfully'});
+					await Chat.sendSprintMessage({ sprintId, message, userId });
+					return res.status(200).send({ message: 'Message sent successfully' });
 				default:
-					return res.status(400).send({message: 'Invalid type'});
+					return res.status(400).send({ message: 'Invalid type' });
 			}
-		}
-		catch (error) {
+		} catch (error) {
 			console.error('Error in sending message:', error);
-			return res.status(400).send({message: 'Failed to send message'});
+			return res.status(400).send({ message: 'Failed to send message' });
 		}
-
-
 	} catch (error) {
 		console.error('Error in adding user to group:', error);
 		res.status(500).send({ message: 'Internal server error' });

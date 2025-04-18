@@ -3,10 +3,12 @@ const Sprint = require('../../models/sprint');
 const Story = require('../../models/story');
 const UserGroup = require('../../models/usergroup');
 
-router.post('/unlink', async (req, res) => {
+router.post('/', async (req, res) => {
 	try {
 		const { sprintId, storyId } = req.query;
 		const userId = req.uuid;
+
+		console.log(req.query);
 
 		// Find the sprint and check if it exists
 		const sprint = await Sprint.findByPk(sprintId);

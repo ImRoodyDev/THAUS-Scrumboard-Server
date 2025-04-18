@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { groupId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup || userGroup.role !== 'admin') {

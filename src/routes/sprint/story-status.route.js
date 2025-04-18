@@ -42,12 +42,20 @@ router.post('/', async (req, res) => {
 			return res.status(404).json({ message: 'Story is not linked to this sprint' });
 		}
 
+		// Check if the story is already started or ended
+		if (story.endDate) {
+			return res.status(400).json({ message: 'Story is already completed' });
+		}
 
 		// Update the story status
-		if (start) {
-			await story.update({userId, startDate: new Date() });
+		if (start && story.startDate) {
+			await story.update({ userId, startDate: new Date() });
+
+			if (!sprint.startDate) {
+				await sprint.update({ startDate: new Date() });
+			}
 		}
-		if (end) {
+		if (end && !story.endDate) {
 			// Chwck if was started by user
 			if (story.userId !== userId) {
 				return res.status(400).json({ message: 'You are not the one to working on this user story' });
@@ -58,7 +66,7 @@ router.post('/', async (req, res) => {
 
 		// Check if all the stories in the sprint are completed
 		const allStories = await Story.findAll({ where: { sprintId } });
-		const allCompleted = allStories.every((story) => story.status === 'completed');
+		const allCompleted = allStories.every((story) => story.endDate != null);
 
 		if (allCompleted) {
 			await sprint.update({ endDate: new Date() });

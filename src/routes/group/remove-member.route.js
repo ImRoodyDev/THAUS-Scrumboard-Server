@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
 		const userRole = await UserGroup.findOne({
 			where: {
 				userId: req.uuid,
-				groupId: groupId
-			}
+				groupId: groupId,
+			},
 		});
 
 		if (!userRole || userRole.role !== 'admin') {
@@ -20,7 +20,11 @@ router.get('/', async (req, res) => {
 		}
 
 		// Remove the user from the group
-		const user = await User.findByPk(userId);
+		const user = await User.findOne({
+			where: {
+				username: userId,
+			},
+		});
 
 		if (!user) {
 			return res.status(404).send({ message: 'User not found' });
@@ -41,7 +45,6 @@ router.get('/', async (req, res) => {
 		console.error('Error in removing user from group:', error);
 		res.status(500).send({ message: 'Internal server error' });
 	}
-}
-);
+});
 
 module.exports = router;

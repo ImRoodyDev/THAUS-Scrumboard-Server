@@ -7,15 +7,12 @@ class Message extends Model {
 		// define association here
 		Message.belongsTo(models['User'], {
 			foreignKey: 'userId',
-			as: 'user',
 		});
 
 		Message.belongsTo(models['Chat'], {
 			foreignKey: 'chatId',
-			as: 'chat',
 		});
 	}
-
 }
 
 Message.init(

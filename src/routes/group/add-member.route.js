@@ -4,7 +4,7 @@ const UserGroup = require('../../models/usergroup');
 
 router.get('/', async (req, res) => {
 	try {
-		const {groupId, username} = req.query;
+		const { groupId, username } = req.query;
 
 		// Check if the user is an admin of this group
 		const userRole = await UserGroup.findOne({

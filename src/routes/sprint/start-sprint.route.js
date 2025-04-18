@@ -7,14 +7,9 @@ router.post('/', async (req, res) => {
 		// Validate request body
 		const { groupId, sprintId } = req.body;
 
-		// Check if postBody is safe
-		if (validationError) {
-			return res.status(400).send({ message: validationError.message.replace(/'/g, '') });
-		}
-
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup || userGroup.role !== 'admin') {

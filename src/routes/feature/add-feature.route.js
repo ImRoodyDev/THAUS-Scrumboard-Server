@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup) {
@@ -33,7 +33,7 @@ router.post('/', async (req, res) => {
 		});
 
 		if (!created) {
-			return res.status(409).send({ message: 'Feature met deze naam bestaat al!' });
+			return res.status(400).send({ message: 'Feature met deze naam bestaat al!' });
 		}
 
 		res.status(200).send({

@@ -1,6 +1,7 @@
 'use strict';
 const { sequelize } = require('../../database');
 const { Model, DataTypes } = require('sequelize');
+const User = require('./user');
 
 class Chat extends Model {
 	// Initialize Sequelize model
@@ -40,7 +41,7 @@ class Chat extends Model {
 
 	static async sendStoryMessage({ storyId, message, userId }) {
 		// Check if the story exists
-		if(!storyId) {
+		if (!storyId) {
 			throw new Error('Story ID is required');
 		}
 
@@ -88,8 +89,22 @@ class Chat extends Model {
 			throw new Error('Chat not found');
 		}
 
-		const messages = await chat.getMessages();
-		return messages;
+		const messages = await chat.getMessages({
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				},
+			],
+		});
+
+		// Format the messages to include only content and username
+		return messages.map((message) => ({
+			id: message.id,
+			content: message.message,
+			username: message.User.username,
+			createdAt: message.createdAt,
+		}));
 	}
 
 	static async getStoryMessages({ storyId }) {
@@ -102,8 +117,22 @@ class Chat extends Model {
 			throw new Error('Chat not found');
 		}
 
-		const messages = await chat.getMessages();
-		return messages;
+		const messages = await chat.getMessages({
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				},
+			],
+		});
+
+		// Format the messages to include only content and username
+		return messages.map((message) => ({
+			id: message.id,
+			content: message.message,
+			username: message.User.username,
+			createdAt: message.createdAt,
+		}));
 	}
 
 	static async getSprintMessages({ sprintId }) {
@@ -116,8 +145,22 @@ class Chat extends Model {
 			throw new Error('Chat not found');
 		}
 
-		const messages = await chat.getMessages();
-		return messages;
+		const messages = await chat.getMessages({
+			include: [
+				{
+					model: User,
+					attributes: ['username'],
+				},
+			],
+		});
+
+		// Format the messages to include only content and username
+		return messages.map((message) => ({
+			id: message.id,
+			content: message.message,
+			username: message.User.username,
+			createdAt: message.createdAt,
+		}));
 	}
 }
 

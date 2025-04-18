@@ -3,11 +3,10 @@ const Epic = require('../../models/epic');
 const UserGroup = require('../../models/usergroup');
 const { validateTextName } = require('../../utils/validationUtils');
 
-
 router.post('/', async (req, res) => {
-	try{
+	try {
 		// Validate request body
-		const {groupId, epicId, description } = req.body;
+		const { groupId, epicId, description } = req.body;
 		const [validationError, storyName] = validateTextName(req.body.name);
 
 		// Check if postBody is safe
@@ -17,7 +16,7 @@ router.post('/', async (req, res) => {
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup) {
@@ -33,6 +32,12 @@ router.post('/', async (req, res) => {
 			return res.status(404).send({ message: 'Epic niet gevonden' });
 		}
 
+		// Check if user story already exists
+		const existingStory = await epic.getStories({ where: { name: storyName } });
+		if (existingStory.length > 0) {
+			return res.status(409).send({ message: 'User story met deze naam bestaat al' });
+		}
+
 		// Create the story
 		const story = await epic.createStory({
 			name: storyName,
@@ -40,8 +45,7 @@ router.post('/', async (req, res) => {
 			groupId: groupId,
 			epicId: epicId,
 			featureId: epic.featureId,
- 		});
-
+		});
 
 		if (!story) {
 			return res.status(500).send({ message: 'Er is een fout opgetreden bij het aanmaken van het user story' });
@@ -52,8 +56,7 @@ router.post('/', async (req, res) => {
 			message: 'User story succesvol aangemaakt',
 			story: story,
 		});
-	}
-	catch (error) {
+	} catch (error) {
 		console.error('Error in creating story:', error);
 		res.status(500).send({ message: 'Internal server error' });
 	}

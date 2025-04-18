@@ -6,15 +6,13 @@ router.post('/', async (req, res) => {
 	try {
 		// Validate request body
 		const groupId = req.body.groupId;
-
-		// Check if postBody is safe
-		if (validationError) {
-			return res.status(400).send({ message: validationError.message.replace(/'/g, '') });
+		if (!groupId) {
+			return res.status(400).send({ message: 'Group ID is vereist' });
 		}
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { groupId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup || userGroup.role !== 'admin') {

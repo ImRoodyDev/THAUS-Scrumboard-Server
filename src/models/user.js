@@ -4,18 +4,20 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 
 class User extends Model {
- 		// Initialize Sequelize model
+	// Initialize Sequelize model
 	static associate(models) {
 		// Many-to-many with Group (membership)
-		User.belongsToMany(models.Group, { through: 'UserGroups', foreignKey: 'userId',
+		/*User.belongsToMany(models.Group, { through: 'UserGroups', foreignKey: 'userId',
 			onDelete: 'CASCADE' // This will automatically delete UserGroup entries when a User is deleted
-		});
+		});*/
 		// One-to-many: User owns groups
 		User.hasMany(models.Group, { foreignKey: 'ownerId' });
 		// One-to-many: User has many messages
 		User.hasMany(models.Message, { foreignKey: 'userId' });
 
 		User.hasMany(models.Group, { foreignKey: 'ownerId' });
+
+		User.hasMany(models.UserGroup, { foreignKey: 'userId' });
 	}
 
 	/* Compare User hash-password */
@@ -52,7 +54,7 @@ User.init(
 		notifications: {
 			type: DataTypes.TEXT,
 			allowNull: true,
- 		},
+		},
 	},
 	{
 		sequelize,
@@ -60,7 +62,7 @@ User.init(
 		tableName: 'Users',
 		// don't forget to enable timestamps!
 		timestamps: true,
-		createdAt: true
+		createdAt: true,
 	}
 );
 

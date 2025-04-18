@@ -4,18 +4,18 @@ const Feature = require('../../models/feature');
 
 router.get('/', async (req, res) => {
 	try {
- 		const {featureId, groupId} = req.query;
+		const { featureId, groupId } = req.query;
 
 		if (!featureId) {
 			return res.status(400).send({ message: 'Feature ID is vereist' });
 		}
 
 		// Check if the user is a group member
- 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid , groupId: groupId },
+		const userGroup = await UserGroup.findOne({
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
-		if (!userGroup) {
+		if (!userGroup || userGroup.role !== 'admin') {
 			return res.status(403).send({ message: 'Je hebt geen toegang tot deze functie' });
 		}
 
@@ -34,6 +34,6 @@ router.get('/', async (req, res) => {
 		console.error('Error in feature deletion:', error);
 		res.status(500).send({ message: 'Interne serverfout' });
 	}
-}   );
+});
 
 module.exports = router;

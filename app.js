@@ -2,10 +2,10 @@ const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { applicationRoutes } = require('./src/routes');
-const {initializeSocketIO} = require("./src/socket");
+const { initializeSocketIO } = require('./src/socket');
 
 // Application port
-const PORT = process.env.NODE_PORT || 3002;
+const PORT = process.env.NODE_PORT || 3004;
 
 // Configure cors
 const corsConfig = cors({

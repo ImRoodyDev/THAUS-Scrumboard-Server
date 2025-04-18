@@ -33,10 +33,6 @@ Sprint.init(
 			allowNull: false,
 			defaultValue: DataTypes.UUIDV4,
 		},
-		name: {
-			type: DataTypes.STRING(100),
-			allowNull: false,
-		},
 		startDate: {
 			type: DataTypes.DATE,
 			allowNull: true,

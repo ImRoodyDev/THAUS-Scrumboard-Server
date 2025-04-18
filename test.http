@@ -1,6 +1,8 @@
-@baseUrl = http://localhost:3002/api
-@accessToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZWRhZjU0YzQtNGU0Zi00NDY2LWJhODQtYjgwNDNjNzk0Y2Q2IiwiaWF0IjoxNzQ0OTUwNDYxLCJleHAiOjE3NDQ5ODY0NjF9.IEApOTOkGLjxRG7MVWDomYWj9MM1keeOg5vOivnwqS-0Zx_8Z44oEsYIV8gPZ2S_SikZMggKSueasMBPW9935r66-LkEF1g-S3zKpDKBPhYGbTmk3HDxgmlUbsCrkToRbeNFEH9gQgtbctiKLGtmn8Ju6YPgdvDWKtnNkRhzfL7QdnHcXGhiRKehHAJrB50uIS_bkU_fxGIMNpMJOe7ozcnUibumjuHwWRCgqW-QAz_bdnuzlkTo-Ns4QFtlFxxquWjJfk5oZKJHKBqcMSoCxRxWMX4dS3jfvY2dRrutsyLTS3DZ2mKqjTjXiO7kAJKNhFRl8fLVi8Q2IqhcsHm6BW5oSzpoiLo0rs2PbK1cJORdh5zUBr2Q1NMIMEdnBsU_TFeFA1w2B5Tc-r5ruD0GniVpsC03aHljo2MkaYV0JxWyltnYMmd8K3aHKgk3tC01-rKjvU4evcRQepW1cgtOOMw3PBxneYkqbtMxjAmROpF9KUobLj6CsleM7alnjEfK
-@refreshToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiZWRhZjU0YzQtNGU0Zi00NDY2LWJhODQtYjgwNDNjNzk0Y2Q2IiwicmVzZXRDb3VudCI6MCwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDQ5NTA0NjF9.WOcxlj6KVGyD0uy24cFOWA1-VkzLFMYJo_ba1gOFZoM5W2uZZYxBx4cwiHsOZE2IyEJqTe9dE2MMCGENBAN-b-_qOdwbZz4X2N_2r6pLfn82KidqSTGMq9dWZkpdEHH3cIocMdo08BTUgBQQcGvDmv4HkF2r0-9lDLf6PFNS3cJiuuYn6yBHC6ONwJxvlRYEtKaNQxeGk5ceKWWMJL6BkfRzR9dZDiiFOw1_vhHxxKatqIaqBzuoxVUaGM5Nw-7dhX1rwTEUi3b8cM2FGafD3wJVdkaMZcGxETYD1tV3tO1KlrWcI0jZvCE1b9fnx4oUNwSMIyi--wgS-WyoYwoq7zlFG5_7g_MjPbndwmLnt6SahPdeXBFkL6KV-P7z0gVk0TgWTC3gEOJ6Z9al0ljJrdTVA4KMoCOK9VGMFNz_-mdnwQvyGqQB9-luxC9WQ2MS3NMap8PlaH3oXZpTwFDH2Ci-9lWNz8qvpbWHKb-D7uGg4c_YiJ7QkgB96uPSGUco
+@baseUrl = http://localhost:3004/api
+@accessToken =  eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwiaWF0IjoxNzQ0OTU1NzU1LCJleHAiOjE3NDQ5OTE3NTV9.kJi1D7dFFAFz0YIxQiuuzicyoH0YGwjRTyoLb_TQiJUiLghkZwa_3YC80hK82e1ugwKAifQ8-Qqi91Oum8wdOqChGgmFzci5ScDDwqKP8RT5P8UL3s_Jn60tyP9giO5eGR8c33nl0typsR6mLGQEIg-SjOvY7gQWWNwqx5efq6Lzp-xjvwUNc4Cac1UKNAI8iRRMQ-9iofj3FFyW4zepBX1nNk1E-RQHMKEGXM2LTOe5nRT7ZWNMd-9Hd5FXwT2jDxDanBEpZ2WuUv9qCgl1aOcz7f9j6eqwFXVQEO7XOiB_lFGDZ9qLulGx5mfneQdyb6wD2rUPkP9gqCFcZAXgKg9luJLp4PCWj7vZcqsCQDrG9_JTYzRO8S2UvkcWPoouOIt3wj6KDvSba_0ntAm4ThdLXMjPM31AmspPETZByvv8At2RFYMFEjxSPyXrBeDNnZWq1ValS3BAZEJenL2HxrLmDrQfS9bmMJi3xLcRF-TWPzIusj6vsMpqYbAOJabE
+
+@refreshToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwicmVzZXRDb3VudCI6MCwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDQ5NTU3NTV9.cZFOsgIlL8A2JgVgj4XMI7A7Qrn_LGvtPFJfvzF1iXBOwU5xeGXzUTOe6r85o5YpW_gCWyUkfn8SPVO7E7DSXsMu-N9cwm2uWBnC_ydduut3prkUpsJDQMl_9uqIxGZCZFTUaFlTk_3hEXrxUicG17DRlnpVCgc1OJS89dkzj1Ohs5tEUrgiHD0W2UwxQjH-4fmXcN6tKyVVYHMlDbwGRaj2jfPa_9G4MGVjvRLUIW270KG7SgDu9XXw91D8jR2wSmRhOhBBfHhzKXBp0m2tP2Y22NYu6qWIUi9aKzS0n5tXMhz5amyO0sxvPFkcKWqc5We0WAlLPI9fW6IRJ09g6sfPFUNTdu6RiorMzoakUlF8h69ODfIJkJrYkj0-sRCufHF_9RJxGsFiIHaDKR0FmCGytUbRI9v4nhxipxgaPW_iLd8DfGgMWDQqXYcvB7UmscrQlM-qeyQ4ZBiNz4HmOXgF7deDDraWDLlf4wa67MFPT3d9EQI0X9P5fZX38toA
+
 
 ### Note on authentication:
 # This API uses dual token authentication:
@@ -11,6 +13,10 @@
 # - After login, copy the accessToken from the response to @accessToken variable
 # - The refreshToken will be automatically saved in cookies if testing in a browser
 # - For manual testing, you can use the Cookie header as shown in examples
+
+
+
+
 
 ### Authentication Endpoints ###
 
@@ -32,13 +38,18 @@ Content-Type: application/json
   "password": "Password123"
 }
 
+
+
+
+
+
 ### Group Endpoints ###
 
 ### Create Group
 POST {{baseUrl}}/group/create-group
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
-Cookie: refreshToken=your_refresh_token_here
+# Cookie: refreshToken=your_refresh_token_here
 
 {
   "groupName": "TestGroup",
@@ -51,12 +62,12 @@ Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
 ### Add Member to Group
-GET {{baseUrl}}/group/add-member?groupId=group_id_here&username=username_here
+GET {{baseUrl}}/group/add-member?groupId=f21220d5-b95c-456a-a5b5-654786c36f08&username=testuser11
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
 ### Remove Member from Group
-GET {{baseUrl}}/group/remove-member?groupId=group_id_here&userId=user_id_here
+GET {{baseUrl}}/group/remove-member?groupId=f21220d5-b95c-456a-a5b5-654786c36f08&userId=testuser11
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
@@ -64,6 +75,10 @@ Authorization: Bearer {{accessToken}}
 GET {{baseUrl}}/group/delete-group/group_id_here
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
+
+
+
+
 
 ### Feature Endpoints ###
 
@@ -75,13 +90,17 @@ Content-Type: application/json
 
 {
   "name": "TestFeature",
-  "groupId": "group_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08"
 }
 
 ### Delete Feature
-GET {{baseUrl}}/feature/delete-feature?featureId=feature_id_here&groupId=group_id_here
+GET {{baseUrl}}/feature/delete-feature?featureId=15146ee3-499b-4d13-bf0b-0f8b36ef1050&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
+
+
+
+
 
 ### Epic Endpoints ###
 
@@ -92,15 +111,19 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "name": "TestEpic",
-  "groupId": "group_id_here",
-  "featureId": "feature_id_here"
+  "name": "TestEpic11",
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08",
+  "featureId": "c2458388-2570-40fc-a644-56d0c92106f3"
 }
 
 ### Delete Epic
-GET {{baseUrl}}/epic/delete-epic?epicId=epic_id_here&groupId=group_id_here
+GET {{baseUrl}}/epic/delete-epic?epicId=29437c7f-a52a-492d-9e02-e0911e426b76&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
+
+
+
+
 
 ### Story Endpoints ###
 
@@ -111,16 +134,21 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "name": "TestStory",
-  "description": "This is a test story",
-  "groupId": "group_id_here",
-  "epicId": "epic_id_here"
+  "name": "TestStory111",
+  "description": "This is a test story1",
+  "epicId": "8547ff27-cd08-47da-a687-469ce24b26d1",
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08"
 }
 
 ### Delete Story
-GET {{baseUrl}}/story/delete-story?storyId=story_id_here&groupId=group_id_here
+GET {{baseUrl}}/story/delete-story?storyId=e8f0e4b9-1bc2-44a5-9369-2a8bce0e6dbf&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
+
+
+
+
+
 
 ### Sprint Endpoints ###
 
@@ -131,7 +159,7 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "groupId": "group_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08"
 }
 
 ### Start Sprint
@@ -141,8 +169,8 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "groupId": "group_id_here",
-  "sprintId": "sprint_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08",
+  "sprintId": "f5c525a0-6ec6-4025-97d3-9d873ea362ab"
 }
 
 ### Link Story to Sprint
@@ -152,16 +180,16 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "sprintId": "sprint_id_here",
-  "storyId": "story_id_here"
+  "sprintId": "f5c525a0-6ec6-4025-97d3-9d873ea362ab",
+  "storyId": "93dd76a2-d6f6-4914-a4d5-959ae1faf0a6"
 }
 
 ### Unlink Story from Sprint
-POST {{baseUrl}}/sprint/unlink-story/unlink
+POST {{baseUrl}}/sprint/unlink-story/?sprintId=f5c525a0-6ec6-4025-97d3-9d873ea362ab&storyId=93dd76a2-d6f6-4914-a4d5-959ae1faf0a6
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
-query: sprintId=sprint_id_here&storyId=story_id_here
+
 
 ### Update Story Status in Sprint
 POST {{baseUrl}}/sprint/story-status
@@ -170,20 +198,24 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "sprintId": "sprint_id_here",
-  "storyId": "story_id_here",
+  "sprintId": "f5c525a0-6ec6-4025-97d3-9d873ea362ab",
+  "storyId": "93dd76a2-d6f6-4914-a4d5-959ae1faf0a6",
   "start": true,
-  "end": false
+  "end": true
 }
 
 ### Delete Sprint
-GET {{baseUrl}}/sprint/delete-sprint?sprintId=sprint_id_here&groupId=group_id_here
+GET {{baseUrl}}/sprint/delete-sprint?sprintId=f5c525a0-6ec6-4025-97d3-9d873ea362ab&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
+
+
+
+
 ### Chat Endpoints ###
 
-### Send Group Message
+### Send Group Message :type "message" : group , story, sprint
 POST {{baseUrl}}/chat/add-message/group
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
@@ -191,7 +223,7 @@ Content-Type: application/json
 
 {
   "message": "This is a test group message",
-  "groupId": "group_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08"
 }
 
 ### Send Story Message
@@ -202,8 +234,8 @@ Content-Type: application/json
 
 {
   "message": "This is a test story message",
-  "groupId": "group_id_here",
-  "storyId": "story_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08",
+  "storyId": "93dd76a2-d6f6-4914-a4d5-959ae1faf0a6"
 }
 
 ### Send Sprint Message
@@ -214,21 +246,21 @@ Content-Type: application/json
 
 {
   "message": "This is a test sprint message",
-  "groupId": "group_id_here",
-  "sprintId": "sprint_id_here"
+  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08",
+  "sprintId": "ce9fd58f-0d28-4706-a770-736faf0dc4f6"
 }
 
 ### Get Group Messages
-GET {{baseUrl}}/chat/get-messages/group?groupId=group_id_here
+GET {{baseUrl}}/chat/get-messages/group?groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
 ### Get Story Messages
-GET {{baseUrl}}/chat/get-messages/story?storyId=story_id_here
+GET {{baseUrl}}/chat/get-messages/story?storyId=93dd76a2-d6f6-4914-a4d5-959ae1faf0a6&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
 ### Get Sprint Messages
-GET {{baseUrl}}/chat/get-messages/sprint?sprintId=sprint_id_here
+GET {{baseUrl}}/chat/get-messages/sprint?sprintId=ce9fd58f-0d28-4706-a770-736faf0dc4f6&groupId=f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here

@@ -15,7 +15,7 @@ router.post('/', async (req, res) => {
 
 		// Check if the user is a group member
 		const userGroup = await UserGroup.findOne({
-			where: { id: req.uuid, groupId: groupId },
+			where: { userId: req.uuid, groupId: groupId },
 		});
 
 		if (!userGroup) {
@@ -27,6 +27,12 @@ router.post('/', async (req, res) => {
 
 		if (!feature) {
 			return res.status(404).send({ message: 'Feature niet gevonden' });
+		}
+
+		// Check if the epic already exists
+		const existingEpic = await feature.getEpics({ where: { name: epicName } });
+		if (existingEpic.length > 0) {
+			return res.status(409).send({ message: 'Epic met deze naam bestaat al' });
 		}
 
 		// Use the hasMany association to create an epic for the feature
