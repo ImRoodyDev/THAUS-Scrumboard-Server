@@ -35,8 +35,11 @@ router.post('/', async (req, res) => {
 		saveRefreshToken(res, refreshToken);
 
 		res.status(200).send({
+			refreshToken,
 			accessToken,
+			user,
 			message: 'Gebruiker is succesvol aangemaakt',
+			groups: [],
 		});
 	} catch (error) {
 		console.error('Error in user registration:', error);

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const Group = require('../../models/group');
 const UserGroup = require('../../models/usergroup');
-const {validateTextName} = require('../../utils/validationUtils');
+const { validateTextName } = require('../../utils/validationUtils');
 
 router.post('/', async (req, res) => {
 	try {
@@ -11,21 +11,27 @@ router.post('/', async (req, res) => {
 
 		// Check if postBody is safe
 		if (groupError) {
-			return res.status(400).send({ message:  groupError.message.replace(/'/g, '')  });
+			return res.status(400).send({ message: groupError.message.replace(/'/g, '') });
 		}
 
 		// Check if groupType is safe
-		if ( !groupType  ) {
+		if (!groupType) {
 			return res.status(400).send({ message: 'Invalid group type' });
+		}
+
+		// Check if group name already exists
+		const existingGroup = await Group.findOne({ where: { name: groupName, ownerId: req.uuid } });
+
+		if (existingGroup) {
+			return res.status(400).send({ message: 'Group name already exists' });
 		}
 
 		// Create new group in the database
 		const newGroup = await Group.create({
 			name: groupName,
 			type: groupType,
-			ownerId: req.uuid
+			ownerId: req.uuid,
 		});
-
 
 		// Add the user to the group with a role
 		await UserGroup.create({
@@ -39,8 +45,7 @@ router.post('/', async (req, res) => {
 			message: 'Group created successfully',
 			group: newGroup,
 		});
-	}
-	catch (error) {
+	} catch (error) {
 		console.error('Error in group creation:', error);
 		res.status(500).send({ message: 'Internal server error' });
 	}

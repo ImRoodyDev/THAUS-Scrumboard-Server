@@ -5,7 +5,7 @@ const UserGroup = require('../../models/usergroup');
 router.get('/', async (req, res) => {
 	try {
 		const groupId = req.query.groupId;
-		const userId = req.query.userId;
+		const userId = req.query.username;
 
 		// Check if the user is an admin of this group
 		const userRole = await UserGroup.findOne({
@@ -22,7 +22,7 @@ router.get('/', async (req, res) => {
 		// Remove the user from the group
 		const user = await User.findOne({
 			where: {
-				username: userId,
+				id: userId,
 			},
 		});
 

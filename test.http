@@ -1,7 +1,7 @@
 @baseUrl = http://localhost:3004/api
-@accessToken =  eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwiaWF0IjoxNzQ0OTU1NzU1LCJleHAiOjE3NDQ5OTE3NTV9.kJi1D7dFFAFz0YIxQiuuzicyoH0YGwjRTyoLb_TQiJUiLghkZwa_3YC80hK82e1ugwKAifQ8-Qqi91Oum8wdOqChGgmFzci5ScDDwqKP8RT5P8UL3s_Jn60tyP9giO5eGR8c33nl0typsR6mLGQEIg-SjOvY7gQWWNwqx5efq6Lzp-xjvwUNc4Cac1UKNAI8iRRMQ-9iofj3FFyW4zepBX1nNk1E-RQHMKEGXM2LTOe5nRT7ZWNMd-9Hd5FXwT2jDxDanBEpZ2WuUv9qCgl1aOcz7f9j6eqwFXVQEO7XOiB_lFGDZ9qLulGx5mfneQdyb6wD2rUPkP9gqCFcZAXgKg9luJLp4PCWj7vZcqsCQDrG9_JTYzRO8S2UvkcWPoouOIt3wj6KDvSba_0ntAm4ThdLXMjPM31AmspPETZByvv8At2RFYMFEjxSPyXrBeDNnZWq1ValS3BAZEJenL2HxrLmDrQfS9bmMJi3xLcRF-TWPzIusj6vsMpqYbAOJabE
+@accessToken =  eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwiaWF0IjoxNzQ1MDAxODI4LCJleHAiOjE3NDUwMzc4Mjh9.KhnJ1v145FmeBSRgXtGlKxR8MpU61IVyqTZAboSonFwVnUHU82GbqiYzPdG5HAgRmCOqXk2tRizwwhOaXCbgpk22jpEk4QjWEmDBXVZKre_B2VJd-PmWAG3RMjpLPRW5NB0kepG3-Ro8ZS-Z3VoU09O2B5__MXVbB-v2V4eTZ-MBydYaU3833yzETeo2pYXJOoBFN2mq8c2ev2-5eTJtcV3hz1Gt6bZhanjqHc_E0eaygQ5_307bd1UYyrKnXc8hbzNeevrzOaTSfk8m4K3u2ovvkyjGKvwE0U0AK4cxck5_nZiOjY46l5Kc-AHO1yDo9AUtXxiOnaBE0Iit1wiAXgniJoi0pkDS5qIL0vJBxSWLP7CO8g-XPaG_DGFaf8_R9BelYJhm_s9s40JMsPpEFaxiIO-8cISNWFsUHQCKhpbexRgmHwxbab1le_NtukvrW5G9mz8ecpnJjcJ3xNmFo1q7ngwZe9Xdl-PNK54HMhc71K4g3IbINIkdpaLY4QrW
 
-@refreshToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwicmVzZXRDb3VudCI6MCwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDQ5NTU3NTV9.cZFOsgIlL8A2JgVgj4XMI7A7Qrn_LGvtPFJfvzF1iXBOwU5xeGXzUTOe6r85o5YpW_gCWyUkfn8SPVO7E7DSXsMu-N9cwm2uWBnC_ydduut3prkUpsJDQMl_9uqIxGZCZFTUaFlTk_3hEXrxUicG17DRlnpVCgc1OJS89dkzj1Ohs5tEUrgiHD0W2UwxQjH-4fmXcN6tKyVVYHMlDbwGRaj2jfPa_9G4MGVjvRLUIW270KG7SgDu9XXw91D8jR2wSmRhOhBBfHhzKXBp0m2tP2Y22NYu6qWIUi9aKzS0n5tXMhz5amyO0sxvPFkcKWqc5We0WAlLPI9fW6IRJ09g6sfPFUNTdu6RiorMzoakUlF8h69ODfIJkJrYkj0-sRCufHF_9RJxGsFiIHaDKR0FmCGytUbRI9v4nhxipxgaPW_iLd8DfGgMWDQqXYcvB7UmscrQlM-qeyQ4ZBiNz4HmOXgF7deDDraWDLlf4wa67MFPT3d9EQI0X9P5fZX38toA
+@refreshToken = eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1dWlkIjoiMmVjMmY4YTEtMzI4MC00MGJiLWE4OWEtNjY0M2UwMjZmZDdlIiwicmVzZXRDb3VudCI6MCwicm9sZSI6InVzZXIiLCJpYXQiOjE3NDUwMDE4Mjh9.hvBUC6c-6FMDMu86EaM1sxElbtk1EQmDYvJexHRY7lVeWf3xjiNTMDChvq3_SAKBBlhrGVvmTcwitEnnEdJFLAIeWH6ovxqHArhA-Gnr8ndXespG1HHY6_640cTbETGt4rKwmuVF5qEdDq_FN5In96Sn1-5JjMIGJ_ffoOSUk6MYZDEZHYdkft7GKlOP86wn2emrLm3G8x2kJrkTvUqXwKeeP_1mvAD3RGWn9gW0pGBnD-sLF-0e9w8MaEx9GsAERO3Il5dOpsf9NBgKXBuolHY_dvOVBIXPGB0twhyXXMn1koQ3_RRs-IOnITemoFdfGSHYhkojupTRPvxqkWIDpGE5Z6BBtnmA7oKKkemDahcKaR_qx9MjMCHCGFvrABUY9Dl_LuFu2jUUqdA0DOLjoqA29It_OYYiVXj8RiZWfd4VjRqK8EjnShKYoR_w3uGpTNwcjx3T8YGEnolhsFe6XIxMKS5WAZ1EdJ_wTkbOEL9YVZOEGU4luBsDHDldZjRE
 
 
 ### Note on authentication:
@@ -20,22 +20,22 @@
 
 ### Authentication Endpoints ###
 
-### Register
+### Register v
 POST {{baseUrl}}/register
 Content-Type: application/json
 
 {
-  "username": "testuser666",
+  "username": "testusffedr666",
   "password": "Password123"
 }
 
-### Login
+### Login v
 POST {{baseUrl}}/login
 Content-Type: application/json
 
 {
-  "username": "testuser",
-  "password": "Password123"
+  "username": "Roody",
+  "password": "Roody123"
 }
 
 
@@ -45,7 +45,7 @@ Content-Type: application/json
 
 ### Group Endpoints ###
 
-### Create Group
+### Create Group v
 POST {{baseUrl}}/group/create-group
 Authorization: Bearer {{accessToken}}
 Content-Type: application/json
@@ -56,12 +56,12 @@ Content-Type: application/json
   "groupType": "scrum"
 }
 
-### Get Groups
+### Get Groups v
 GET {{baseUrl}}/group/get-groups
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
 
-### Get Group by ID
+### Get Group by ID v
 GET {{baseUrl}}/group/get-group/f21220d5-b95c-456a-a5b5-654786c36f08
 Authorization: Bearer {{accessToken}}
 # Cookie: refreshToken=your_refresh_token_here
@@ -164,7 +164,7 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08"
+  "groupId": "c3a7f1dc-ffff-4c0f-9814-bf83e85f66da"
 }
 
 ### Start Sprint
@@ -174,7 +174,7 @@ Content-Type: application/json
 # Cookie: refreshToken=your_refresh_token_here
 
 {
-  "groupId": "f21220d5-b95c-456a-a5b5-654786c36f08",
+  "groupId": "fc3a7f1dc-ffff-4c0f-9814-bf83e85f66da",
   "sprintId": "f5c525a0-6ec6-4025-97d3-9d873ea362ab"
 }
 

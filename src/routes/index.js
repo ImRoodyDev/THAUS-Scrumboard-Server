@@ -6,6 +6,7 @@ const applicationRoutes = express.Router();
 const { NoAuthentication, Authentication } = require('../middlewares/authentication');
 
 // Routes handling for express application
+const User = require('./auth/user.route'); // ✅
 const Register = require('./auth/register.route'); // ✅
 const Login = require('./auth/login.route'); // ✅
 
@@ -35,6 +36,7 @@ const UnlinkStory = require('./sprint/unlink-story.route'); // ✅
 const AddStory = require('./story/add-story.route'); // ✅
 const DeleteStory = require('./story/delete-story.route'); // ✅
 
+applicationRoutes.use('/user', Authentication, User);
 applicationRoutes.use('/login', NoAuthentication, Login);
 applicationRoutes.use('/register', NoAuthentication, Register);
 

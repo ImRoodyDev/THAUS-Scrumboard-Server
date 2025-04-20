@@ -4,7 +4,7 @@ const UserGroup = require('../../models/usergroup');
 
 router.get('/', async (req, res) => {
 	try {
-		const { groupId, username } = req.query;
+		const { groupId, username, role } = req.query;
 
 		// Check if the user is an admin of this group
 		const userRole = await UserGroup.findOne({
@@ -33,11 +33,17 @@ router.get('/', async (req, res) => {
 		await UserGroup.create({
 			userId: user.id,
 			groupId: groupId,
-			role: 'member',
+			role: role,
 		});
 
 		res.status(200).send({
 			message: 'User added to group successfully',
+			member: {
+				id: user.id,
+				username: user.username,
+				role,
+				createAt: new Date(),
+			},
 		});
 	} catch (error) {
 		if (error.name === 'SequelizeUniqueConstraintError') {

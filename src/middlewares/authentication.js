@@ -15,7 +15,7 @@ const Authentication = async (req, res, next) => {
 		}
 
 		// Tokens availability
-		if (refreshToken.length < 1 || accessToken.length < 1 ) {
+		if (refreshToken.length < 1 || accessToken.length < 1) {
 			throw new Error('User not logged in');
 		}
 
@@ -35,7 +35,7 @@ const Authentication = async (req, res, next) => {
 			next(); // Can Access Path
 		} else {
 			// Clear saved tokens
-			clearTokens();
+			clearTokens(res);
 
 			return res.status(400).send({ message: 'Authentication failed' });
 		}

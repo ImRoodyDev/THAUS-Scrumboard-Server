@@ -12,7 +12,7 @@ router.get('/', async (req, res) => {
 		// Fetch groups with related data
 		const usergroups = await UserGroup.findAll({
 			where: { userId: req.uuid },
-			attributes: ['role'], // Fetch only the role of the user in the group
+			attributes: ['role', 'createdAt'], // Fetch only the role of the user in the group
 			include: [
 				{
 					model: Group,
@@ -69,11 +69,13 @@ router.get('/', async (req, res) => {
 				currentUserRole: usergroup.role,
 
 				// Map members
-				members: group.UserGroups.map((member) => ({
-					userId: member.userId,
-					username: member.User?.username,
-					role: member.role,
-				})),
+				members:
+					group.UserGroups.map((member) => ({
+						userId: member.userId,
+						username: member.User?.username,
+						role: member.role,
+						createdAt: member.createdAt,
+					})) || [],
 
 				// Map sprints
 				sprints:
@@ -82,6 +84,7 @@ router.get('/', async (req, res) => {
 						name: sprint.name,
 						startDate: sprint.startDate,
 						endDate: sprint.endDate,
+						createdAt: sprint.createdAt,
 					})) || [],
 
 				// Map features and nested items
@@ -90,12 +93,14 @@ router.get('/', async (req, res) => {
 						id: feature.id,
 						name: feature.name,
 						description: feature.description,
+						createdAt: feature.createdAt,
 
 						epics:
 							feature.Epics?.map((epic) => ({
 								id: epic.id,
 								name: epic.name,
 								description: epic.description,
+								createdAt: epic.createdAt,
 
 								stories:
 									epic.Stories?.map((story) => ({
@@ -104,6 +109,9 @@ router.get('/', async (req, res) => {
 										description: story.description,
 										sprintId: story.sprintId,
 										userId: story.userId,
+										startDate: story.startDate,
+										endDate: story.endDate,
+										createdAt: story.createdAt,
 									})) || [],
 							})) || [],
 					})) || [],
@@ -113,7 +121,7 @@ router.get('/', async (req, res) => {
 		// Send response to client
 		res.status(200).send({
 			message: 'Groups fetched successfully',
-			groups: groups,
+			groups: groups || [],
 		});
 	} catch (error) {
 		console.error('Error in fetching groups:', error);

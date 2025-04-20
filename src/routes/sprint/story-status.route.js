@@ -48,13 +48,14 @@ router.post('/', async (req, res) => {
 		}
 
 		// Update the story status
-		if (start && story.startDate) {
+		if (start && !story.startDate) {
 			await story.update({ userId, startDate: new Date() });
 
 			if (!sprint.startDate) {
 				await sprint.update({ startDate: new Date() });
 			}
 		}
+
 		if (end && !story.endDate) {
 			// Chwck if was started by user
 			if (story.userId !== userId) {

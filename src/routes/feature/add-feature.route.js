@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 
 		res.status(200).send({
 			message: 'Feature is succesvol aangemaakt',
-			newFeature,
+			feature: newFeature,
 		});
 	} catch (error) {
 		console.error('Error in feature creation:', error);

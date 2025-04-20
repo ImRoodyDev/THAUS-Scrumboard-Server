@@ -37,7 +37,7 @@ router.get('/:type', async (req, res) => {
 					return res.status(400).send({ message: 'Invalid type' });
 			}
 
-			return res.status(200).send({ messages });
+			return res.status(200).send({ messages: messages || [] });
 		} catch (error) {
 			console.error('Error in retrieving messages:', error);
 			return res.status(400).send({ message: 'Failed to retrieve messages' });

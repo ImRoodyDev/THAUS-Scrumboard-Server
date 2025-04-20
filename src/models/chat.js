@@ -101,7 +101,8 @@ class Chat extends Model {
 		// Format the messages to include only content and username
 		return messages.map((message) => ({
 			id: message.id,
-			content: message.message,
+			message: message.message,
+			userId: message.userId,
 			username: message.User.username,
 			createdAt: message.createdAt,
 		}));
@@ -129,7 +130,8 @@ class Chat extends Model {
 		// Format the messages to include only content and username
 		return messages.map((message) => ({
 			id: message.id,
-			content: message.message,
+			message: message.message,
+			userId: message.userId,
 			username: message.User.username,
 			createdAt: message.createdAt,
 		}));
@@ -157,7 +159,8 @@ class Chat extends Model {
 		// Format the messages to include only content and username
 		return messages.map((message) => ({
 			id: message.id,
-			content: message.message,
+			message: message.message,
+			userId: message.userId,
 			username: message.User.username,
 			createdAt: message.createdAt,
 		}));

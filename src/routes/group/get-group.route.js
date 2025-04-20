@@ -6,6 +6,8 @@ const Epic = require('../../models/epic');
 const Story = require('../../models/story');
 const Sprint = require('../../models/sprint');
 const UserGroup = require('../../models/usergroup');
+const Chat = require('../../models/chat');
+const Message = require('../../models/message');
 
 router.get('/:groupId', async (req, res) => {
 	try {
@@ -35,7 +37,7 @@ router.get('/:groupId', async (req, res) => {
 						},
 						{
 							model: UserGroup,
-							attributes: ['role', 'userId'],
+							attributes: ['role', 'userId', 'createdAt'],
 							include: [
 								{
 									model: User,
@@ -46,6 +48,22 @@ router.get('/:groupId', async (req, res) => {
 						{
 							model: Sprint,
 							attributes: ['id', 'startDate', 'endDate'],
+						},
+						{
+							model: Chat,
+							attributes: ['id'],
+							include: [
+								{
+									model: Message,
+									attributes: ['message', 'createdAt', 'userId'],
+									include: [
+										{
+											model: User,
+											attributes: ['username'],
+										},
+									],
+								},
+							],
 						},
 					],
 				},
@@ -65,7 +83,6 @@ router.get('/:groupId', async (req, res) => {
 				id: group.id,
 				name: group.name,
 				type: group.type,
-				// ownerId: group.ownerId,
 				createdAt: group.createdAt,
 				updatedAt: group.updatedAt,
 				currentUserRole: usergroup.role,
@@ -76,6 +93,7 @@ router.get('/:groupId', async (req, res) => {
 						userId: member.userId,
 						username: member.User?.username,
 						role: member.role,
+						createdAt: member.createdAt,
 					})) || [],
 
 				// Map sprints
@@ -85,6 +103,7 @@ router.get('/:groupId', async (req, res) => {
 						name: sprint.name,
 						startDate: sprint.startDate,
 						endDate: sprint.endDate,
+						createdAt: sprint.createdAt,
 					})) || [],
 
 				// Map features and nested items
@@ -93,6 +112,7 @@ router.get('/:groupId', async (req, res) => {
 						id: feature.id,
 						name: feature.name,
 						description: feature.description,
+						createdAt: feature.createdAt,
 
 						epics:
 							feature.Epics?.map((epic) => ({
@@ -109,8 +129,19 @@ router.get('/:groupId', async (req, res) => {
 										endDate: story.endDate,
 										sprintId: story.sprintId,
 										userId: story.userId,
+										createdAt: story.createdAt,
 									})) || [],
 							})) || [],
+					})) || [],
+
+				// Map chat messages
+				messages:
+					group.Chats[0]?.Messages?.map((message) => ({
+						message: message.message,
+						createdAt: message.createdAt,
+						userId: message.userId,
+						username: message.User?.username,
+						isYours: message.userId === req.uuid,
 					})) || [],
 			};
 		})();
@@ -118,7 +149,7 @@ router.get('/:groupId', async (req, res) => {
 		// Send response to client
 		res.status(200).send({
 			message: 'Groups fetched successfully',
-			groups: group,
+			group: group,
 		});
 	} catch (error) {
 		console.error('Error in fetching groups:', error);

@@ -7,6 +7,8 @@ router.post('/:type', async (req, res) => {
 		const { type } = req.params;
 		const { message, groupId, storyId, sprintId } = req.body;
 
+		console.log('helo');
+
 		if (!message) {
 			return res.status(400).send({ message: 'Message is required' });
 		}

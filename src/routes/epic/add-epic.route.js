@@ -39,13 +39,13 @@ router.post('/', async (req, res) => {
 		const newEpic = await feature.createEpic({ name: epicName, groupId: groupId });
 
 		if (!newEpic) {
-			return res.status(409).send({ message: 'Feauture is niet gemmakt' });
+			return res.status(409).send({ message: 'Epic is niet gemmakt' });
 		}
 
 		// Send response
-		res.status(201).send({ message: 'Feature is succesvol aangemaakt', feature });
+		res.status(201).send({ message: 'Epic is succesvol aangemaakt', epic: newEpic });
 	} catch (error) {
-		console.error('Error in creating feature:', error);
+		console.error('Error in creating epic:', error);
 		res.status(500).send({ message: 'Interne serverfout' });
 	}
 });

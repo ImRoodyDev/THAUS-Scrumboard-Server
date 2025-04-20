@@ -7,14 +7,6 @@ router.get('/:groupId', async (req, res) => {
 	try {
 		const groupId = req.params.groupId;
 
-		// Validate request body
-		const [groupError, groupName] = validateTextName({ name: groupId });
-
-		// Check if postBody is safe
-		if (groupError) {
-			return res.status(400).send({ message: groupError.message.replace(/'/g, '') });
-		}
-
 		// 1. Check if the user is an admin of this group
 		const userRole = await UserGroup.findOne({
 			where: {
