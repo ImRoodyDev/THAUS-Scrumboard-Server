@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 									include: [
 										{
 											model: Story,
-											attributes: ['id', 'name', 'description', 'startDate', 'endDate'],
+											attributes: ['id', 'name', 'description', 'startDate', 'endDate', 'sprintId', 'userId'],
 										},
 									],
 								},
