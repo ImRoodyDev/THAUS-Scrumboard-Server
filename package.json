@@ -9,7 +9,7 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC",
+	"license": "CC-BY-NC-4.0",
 	"type": "commonjs",
 	"dependencies": {
 		"bcrypt": "^5.1.1",

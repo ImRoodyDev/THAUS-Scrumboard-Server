@@ -15,7 +15,7 @@
 - 🏃‍♂️ Scrum project management (Features, Epics, Stories, Sprints)
 - 💬 Real-time chat functionality for groups, stories, and sprints
 - 🛡️ Secure API endpoints with authentication middleware
-- 🔄 Real-time updates with Socket.IO
+- 🔄 Real-time updates with Socket.IO ( Not implemented yet )
 
 ## 📌 Requirements
 
