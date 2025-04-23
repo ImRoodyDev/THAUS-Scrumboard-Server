@@ -1,5 +1,10 @@
+<div align="center" display="flex">
+<img src="https://github.com/user-attachments/assets/57e208d8-08a5-479e-8b75-1153c2b14759" alt="Image" height="100"/>
+<img src="https://github.com/user-attachments/assets/1891173a-1321-43ce-8e00-affdf127cdb3" alt="Image" width="400"/>
+</div>
+
 <div align="center">
-  <h1>📱 THAUS Scrumboard Server</h1>
+  <h1>THAUS Scrumboard Server</h1>
   <p>A RESTful API server for managing agile projects with real-time chat functionality</p>
   
   <img src="https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white" />
